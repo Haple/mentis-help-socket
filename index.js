@@ -13,6 +13,11 @@ app.use('/peerjs', peerServer);
 
 io.on('connection', socket => {
     socket.on('join-room', (roomId, userId) => {
+
+        console.log("join-room");
+        console.log("roomId: " + roomId);
+        console.log("userId: " + userId);
+
         socket.join(roomId)
         socket.to(roomId).broadcast.emit('user-connected', userId);
         // messages
@@ -22,6 +27,10 @@ io.on('connection', socket => {
         });
 
         socket.on('disconnect', () => {
+            console.log("join-room");
+            console.log("roomId: " + roomId);
+            console.log("userId: " + userId);
+
             socket.to(roomId).broadcast.emit('user-disconnected', userId)
         })
     })
