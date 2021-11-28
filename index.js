@@ -12,6 +12,9 @@ const peerServer = ExpressPeerServer(server, {
 app.use('/peerjs', peerServer);
 
 io.on('connection', socket => {
+
+    console.log("connection");
+
     socket.on('join-room', (roomId, userId) => {
 
         console.log("join-room");
